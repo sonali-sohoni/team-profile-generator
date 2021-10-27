@@ -18,5 +18,8 @@
   "homepage": "https://github.com/sonali-sohoni/team-profile-generator#readme",
   "devDependencies": {
     "jest": "^27.3.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.0"
   }
 }
