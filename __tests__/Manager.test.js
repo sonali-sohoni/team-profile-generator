@@ -25,5 +25,5 @@ test("inherited functions ", () => {
 
 test("getRole()", () => {
 	const mgr = new Manager("David", "D1234", "dtest@jesting.com", "1112223333");
-	expect(mgr.getRole).toBe("Manager");
+	expect(mgr.getRole()).toBe("Manager");
 });
