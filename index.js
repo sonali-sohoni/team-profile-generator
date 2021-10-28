@@ -2,6 +2,7 @@ const inquirer = require("inquirer");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
+const generateHtml = require("./utils/HtmlTemplate");
 //const projectTeam = {};
 const getAnswers_Manager = function () {
 	return inquirer.prompt([
@@ -57,8 +58,8 @@ const getChoices = function (projectTeam) {
 			} else if (option.options === "Intern") {
 				return getAnswers_Intern(projectTeam);
 			} else {
-				console.log(projectTeam);
-				return projectTeam;
+				console.log(generateHtml(projectTeam));
+				//write the file.
 			}
 			//return projectTeam;
 		});
@@ -110,7 +111,7 @@ const getAnswers_Engineer = function (projectTeam) {
 			},
 		])
 		.then((edata) => {
-			const engineer = new Engineer(
+			const { ...engineer } = new Engineer(
 				edata.e_name,
 				edata.e_id,
 				edata.e_email,
@@ -164,7 +165,7 @@ const getAnswers_Intern = function (projectTeam) {
 			},
 		])
 		.then((idata) => {
-			const intern = new Intern(
+			const { ...intern } = new Intern(
 				idata.i_name,
 				idata.i_id,
 				idata.i_email,
@@ -179,12 +180,13 @@ const getAnswers_Intern = function (projectTeam) {
 const getEmployeeInfo = function (projectTeam) {
 	getAnswers_Manager().then((data) => {
 		//		console.log(data);
-		projectTeam["Manager"] = new Manager(
+		const { ...obj } = new Manager(
 			data.m_name,
 			data.m_id,
 			data.m_email,
 			data.m_office
 		);
+		projectTeam.Manager = obj;
 		//
 		getChoices(projectTeam);
 	});
@@ -192,8 +194,7 @@ const getEmployeeInfo = function (projectTeam) {
 
 const generateTeamProfile = function () {
 	const projectTeam = {};
-  getEmployeeInfo(projectTeam);
-  generateTemplate(projectTeam)
+	getEmployeeInfo(projectTeam);
 };
 
 generateTeamProfile();
