@@ -46,9 +46,16 @@ THEN I exit the application, and the HTML is generated
 
 ## Screenshots-
 ![test](https://user-images.githubusercontent.com/88642738/139593790-ad80c751-bfcc-439b-9437-b165ab4c7aac.JPG)
-![project_structure](https://user-images.githubusercontent.com/88642738/139593864-bc88f364-2ada-4a02-9e62-e583446e4e49.JPG)
+![project_structure](https://user-images.githubusercontent.com/88642738/139594054-e77cd401-9140-43aa-bbbb-e337b7e23a31.JPG)
 
 
 ## Tests
-To run the test suites, type npm test on the command prompt. This will run all the tests on your code.
+* To run the test suites, type npm test on the command prompt. This will run all the tests on your code.
+  Following tests have been included in test suite 
+* Employee.test.js  - Test all object properties and their values. Test functionality of getName() ,getId() getRole() and getEmail() 
+* Manager.test.js - Test inherited object properties and functions. Test to check office number and getRole()
+* Engineer.test.js - Test inherited object properties and functions. Test to check GitHub username and getRole();
+* Intern.test.jsTest inherited object properties and functions. Test to check school property and getRole();
+
+
 
