@@ -12,6 +12,7 @@ const generateHtml = function (projectTeamObj) {
 			integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
 			crossorigin="anonymous"
 		/>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	</head>
 	<body>
 		<div class="container">
@@ -36,17 +37,24 @@ const generateHtml = function (projectTeamObj) {
 </html>
 `;
 };
-
+//<i class="fas fa-tasks"></i>
+//<i class="fas fa-user-graduate"></i>
+//<i class="fas fa-code"></i>
 function generateCardFunction() {
 	return `
   const generateCard = (emp) => {
+		let iconClass = "";
 		if (emp.role === "Manager") {
-		}
+			iconClass ="fa-tasks";
+		}else if(emp.role=== "Engineer"){
+			iconClass ="fa-laptop-code";
+		}else if(emp.role === "Intern")
+		iconClass ="fa-user-graduate";
 		let div1 = $("<div>").addClass("col-sm-3 m-3");
 		let divCard = $("<div>").addClass("card");
 		divCard.attr("style", "width: 18rem");
 		let divCardHeader = $("<div>").addClass("card-header bg-primary text-light");
-		divCardHeader.html("	<h4> "+emp.name+"</h4> 	<h5>Project"+ emp.role +"</h5>");
+		divCardHeader.html("	<h4> "+emp.name+"</h4> 	<h5>Project"+ emp.role +"&nbsp; <span class='fas "+iconClass+"'></span></h5>");
 		let divCardBody = $("<div>").addClass("card-body bg-secondary bg-opacity-10");
 
 		//divCardBody.append(getListItems(mgr));

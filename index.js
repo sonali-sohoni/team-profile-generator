@@ -3,6 +3,7 @@ const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
 const generateHtml = require("./utils/HtmlTemplate");
+const fs = require("fs");
 //const projectTeam = {};
 const getAnswers_Manager = function () {
 	return inquirer.prompt([
@@ -38,6 +39,15 @@ const getAnswers_Manager = function () {
 			type: "input",
 			name: "m_office",
 			message: "Please enter manager's office number -",
+			validate: (arg) => {
+				const re = /-/g;
+				arg = arg.replace(re, "");
+				//	console.log(arg);
+				if (arg.length != 10) {
+					console.log("Please enter the valid office number");
+					return false;
+				} else return true;
+			},
 		},
 	]);
 };
@@ -58,8 +68,12 @@ const getChoices = function (projectTeam) {
 			} else if (option.options === "Intern") {
 				return getAnswers_Intern(projectTeam);
 			} else {
-				console.log(generateHtml(projectTeam));
-				//write the file.
+				//		console.log(generateHtml(projectTeam));
+				const html = generateHtml(projectTeam);
+				fs.writeFile("./dist/index.html", html, (err) => {
+					if (err) throw new Error("Error in creating file");
+					console.log("File created successfully");
+				});
 			}
 			//return projectTeam;
 		});
