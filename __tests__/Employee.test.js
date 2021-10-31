@@ -23,7 +23,7 @@ test("getId()", () => {
 	expect(emp.getId()).toEqual(expect.any(String));
 });
 
-test("getId()", () => {
+test("getEmail()", () => {
 	const emp = new Employee("TEST Employee", "TEST", "test@jesting.com");
 	expect(emp.getEmail()).toEqual(expect.stringMatching(/^\S+@\S+\.\S+$/));
 });

@@ -12,7 +12,7 @@ test("test Manager object", () => {
 	expect(manager.id).toBe("1234");
 	expect(manager.email).toBe("test@jesting.com");
 	expect(manager.role).toBe("Manager");
-	expect(manager.officeNumber).toBe("1112223333");
+	expect(manager.officeNumber).toBe("111-222-3333");
 });
 
 test("inherited functions ", () => {
@@ -20,7 +20,7 @@ test("inherited functions ", () => {
 	expect(mgr.getName()).toEqual("David");
 	expect(mgr.getId()).toEqual("D1234");
 	expect(mgr.getEmail()).toEqual("dtest@jesting.com");
-	expect(mgr.officeNumber).toBe("1112223333");
+	expect(mgr.officeNumber).toBe("111-222-3333");
 });
 
 test("getRole()", () => {
