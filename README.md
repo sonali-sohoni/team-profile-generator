@@ -1,6 +1,6 @@
 # team-profile-generator
 
-## Description 
+## Purpose 
 
 This is the Node.js command line application that takes information about the employees in the project team and generates HTML page that displayes summaries of each person.
 
